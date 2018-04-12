@@ -1,0 +1,22 @@
+[
+  {
+    "Username": "Orlando",
+    "Gjinia": "female",
+    "Datelindja": "1993-04-08",
+    "Password": "password",
+    "Emer": "Orlando",
+    "Atesi": "Arben",
+    "Mbiemer": "Karamani",
+    "LastActive": "2017-06-15",
+    "Introduction": "Sint aliqua dolor reprehenderit enim veniam fugiat. Veniam laborum et ea incididunt id nulla laborum cupidatat minim enim. Officia culpa irure laborum officia culpa proident laborum est sunt voluptate quis. Labore fugiat quis Lorem ullamco deserunt nisi ad proident eiusmod consectetur Lorem labore aliqua.\r\n",
+    "RoleId": 1,
+    "Interests": "Est enim amet pariatur cupidatat.",
+    "Photos": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/88.jpg",
+        "isMain": true,
+        "description": "Aliquip eu incididunt reprehenderit proident est excepteur sunt nostrud sint irure duis veniam."
+      }
+    ]
+  }
+]
