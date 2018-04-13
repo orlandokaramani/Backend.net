@@ -28,7 +28,7 @@ namespace app.Helpers
                   opt.MapFrom(src => src.Role.Role);
               });
              
-
+            
             CreateMap<Users, UserForDetail>()
             .ForMember(dest => dest.PhotoUrl, opt =>
               {
@@ -41,7 +41,14 @@ namespace app.Helpers
               .ForMember(dest => dest.Roli, opt =>
               {
                   opt.MapFrom(src => src.Role.Role);
+              })
+              .ForMember(dest => dest.Qarku, opt =>
+              {
+                  opt.MapFrom(src => src.IdQarkuNavigation.Qarku1);
               });
+             
+             
+                
             CreateMap<Photos, PhotoForDetail>();
         }
     }

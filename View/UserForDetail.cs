@@ -18,6 +18,10 @@ namespace app.View
         public string Mbiemer { get; set; }
         public string PhotoUrl { get; set; }
         public string Roli { get; set; }
+        public string Qarku { get; set; }
+        public string Bashkia { get; set; }
+        public string Njesia { get; set; }
+        public string Qv { get; set; }
         public ICollection<PhotoForDetail> Photos { get; set; }
 
     }

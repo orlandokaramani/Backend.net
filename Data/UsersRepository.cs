@@ -25,14 +25,14 @@ namespace app.Data
 
         public async Task<Users> GetUser(int id)
         {
-            var user = await _context.Users.Include(r => r.Role).Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(r => r.Role).Include(p => p.Photos).Include(q => q.IdQarkuNavigation).FirstOrDefaultAsync(u => u.Id == id);
             
             return user;
         }
 
         public async Task<IEnumerable<Users>> GetUsers()
         {
-            var users = await _context.Users.Include(p => p.Photos).Include(r => r.Role).ToListAsync();
+            var users = await _context.Users.Include(p => p.Photos).Include(r => r.Role).Include(q => q.IdQarkuNavigation).ToListAsync();
             return users;
         }
 
