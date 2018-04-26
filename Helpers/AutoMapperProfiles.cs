@@ -26,6 +26,10 @@ namespace app.Helpers
               .ForMember(dest => dest.Roli, opt =>
               {
                   opt.MapFrom(src => src.Role.Role);
+              })
+              .ForMember(dest => dest.Qarku, opt =>
+              {
+                  opt.MapFrom(src => src.IdQarkuNavigation.Qarku1);
               });
              
             
@@ -50,6 +54,9 @@ namespace app.Helpers
              
                 
             CreateMap<Photos, PhotoForDetail>();
+            CreateMap<Qv, QvForList>();
+            CreateMap<UserForUpdate, Users>();
+            CreateMap<UserForRegister, Users>();
         }
     }
 }

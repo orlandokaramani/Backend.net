@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using app.Data;
 using app.Models;
 using app.View;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -17,10 +18,12 @@ namespace app.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
             _config = config;
+            _mapper = mapper;
             _repo = repo;
         }
 
@@ -36,12 +39,13 @@ namespace app.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var userToCreate = new Users
-            {
-                Username = userForRegister.Username
-            };
-            var createUser = await _repo.Register(userToCreate, userForRegister.Password);
-            return StatusCode(201);
+            var userToCreate = _mapper.Map<Users>(userForRegister);
+            
+            var createdUser = await _repo.Register(userToCreate, userForRegister.Password);
+
+            var userToReturn = _mapper.Map<UserForDetail>(createdUser);
+
+            return CreatedAtRoute("GetUser", new {controller = "Users", id = createdUser.Id}, userToReturn);
         }
 
         [HttpPost("login")]

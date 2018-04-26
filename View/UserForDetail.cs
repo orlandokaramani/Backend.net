@@ -18,6 +18,10 @@ namespace app.View
         public string Mbiemer { get; set; }
         public string PhotoUrl { get; set; }
         public string Roli { get; set; }
+         public int? IdQarku { get; set; }
+         public int? IdBashkia { get; set; }
+        public int? IdNjesia { get; set; }
+        public int? IdQv { get; set; }
         public string Qarku { get; set; }
         public string Bashkia { get; set; }
         public string Njesia { get; set; }

@@ -39,6 +39,7 @@ namespace app
             services.AddCors();
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IQarkuRepository, QarkuRepository>();
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddAuthorization(options =>{options.AddPolicy("UserRoleByID", policy =>policy.RequireRole("RoleId"));});
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

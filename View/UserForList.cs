@@ -14,6 +14,7 @@ namespace app.View
         public string Mbiemer { get; set; }
         public string PhotoUrl { get; set; }
         public string Roli { get; set; }
+        public string Qarku { get; set; }
     
 
     }
