@@ -12,6 +12,7 @@ namespace app.Data
         Task<bool> SaveAll();
         Task<IEnumerable<Users>> GetUsers(); 
         Task<Users> GetUser(int id);
+        Task<Photos> GetPhoto(int id);
         
     }
 }

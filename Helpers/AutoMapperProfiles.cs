@@ -4,6 +4,7 @@ using app.Data;
 using app.Models;
 using app.View;
 using AutoMapper;
+using Backend.net.View;
 
 namespace app.Helpers
 {
@@ -52,11 +53,12 @@ namespace app.Helpers
               });
              
              
-                
+ 
             CreateMap<Photos, PhotoForDetail>();
-            CreateMap<Qv, QvForList>();
             CreateMap<UserForUpdate, Users>();
             CreateMap<UserForRegister, Users>();
+            CreateMap<PhotoForCreation, Photos>();
+            CreateMap<Photos, PhotoForReturn>();
         }
     }
 }

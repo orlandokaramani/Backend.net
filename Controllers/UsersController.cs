@@ -48,12 +48,12 @@ namespace app.Controllers
         {
             if (!ModelState.IsValid)
             return BadRequest(ModelState);
-            var currentuserid = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentuserid = int.Parse(User.FindFirst(ClaimTypes.Role).Value);
             var userFromRepo = await _repo.GetUser(id);
             if(userFromRepo == null)
             return NotFound($"Could not find user with ID {id}");
 
-            if (currentuserid != userFromRepo.Id)
+            if (currentuserid != 1)
             return Unauthorized();
 
             _mapper.Map(userForUpdate, userFromRepo);

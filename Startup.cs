@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using app.Data;
 using app.Helpers;
 using AutoMapper;
+using Backend.net.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -37,9 +38,9 @@ namespace app
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<Seed>();
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<IQarkuRepository, QarkuRepository>();
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddAuthorization(options =>{options.AddPolicy("UserRoleByID", policy =>policy.RequireRole("RoleId"));});
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

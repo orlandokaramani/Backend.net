@@ -24,6 +24,11 @@ namespace app.Data
             _context.Remove(entity);
         }
 
+        public async Task<Photos> GetPhoto(int id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync (p => p.Id == id);
+            return photo;
+        }
 
         public async Task<Users> GetUser(int id)
         {
@@ -49,19 +54,8 @@ namespace app.Data
         }
       
 
-        public async Task<IEnumerable<Bashkia>> GetBashkite(int id)
-        {
-            var bashkite = await _context.Bashkia.Include(b => b.Njesia).Where(c => c.IdQarku == id).ToListAsync();
-            
-            return bashkite;
-        }
-
-       public async Task<IEnumerable<Qarku>> GetQarqet()
-        {
-                 var qarqet = await _context.Qarku.Include(b => b.Bashkia).ToListAsync();
-            
-            return qarqet;
-        }
+        
+       
         
     }
 }

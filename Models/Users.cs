@@ -15,6 +15,8 @@ namespace app.Models
         public DateTime Datelindja { get; set; }
         public string Emer { get; set; }
         public string Gjinia { get; set; }
+        public string Telefon { get; set; }
+        public string Email { get; set; }
         public string Interests { get; set; }
         public string Introduction { get; set; }
         public DateTime LastActive { get; set; }
