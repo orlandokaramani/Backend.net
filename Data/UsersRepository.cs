@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using app.Helpers;
 using app.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,11 @@ namespace app.Data
             _context.Remove(entity);
         }
 
+        public Task<Photos> GetMainPhotoForUser(int userId)
+        {
+            return _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
+        }
+
         public async Task<Photos> GetPhoto(int id)
         {
             var photo = await _context.Photos.FirstOrDefaultAsync (p => p.Id == id);
@@ -38,16 +44,21 @@ namespace app.Data
         }
       
 
-        public async Task<IEnumerable<Users>> GetUsers()
+        public async Task<PagedList<Users>> GetUsers(UserParams userParams)
         {
             
 
-           var users = await _context.Users.Include(p => p.Photos).Include(r => r.Role).Include(q => q.IdQarkuNavigation).ToListAsync();
+           var users = _context.Users.Include(p => p.Photos).Include(r => r.Role).Include(q => q.IdQarkuNavigation);
+           
+           /* .AsQueryable();
 
-            return users;
+           users = users.Where(u => u.Id != userParams.UserId);
+           users = users.Where(u => u.Gjinia == userParams.Gjinia); */
+
+            return await PagedList<Users>.CreateAsync(users, userParams.PageNumber, userParams.pageSize);
         }
 
-
+       
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using app.Helpers;
 using app.Models;
 
 namespace app.Data
@@ -10,9 +11,10 @@ namespace app.Data
 
         void Delete<T>(T entity) where T: class;
         Task<bool> SaveAll();
-        Task<IEnumerable<Users>> GetUsers(); 
+        Task<PagedList<Users>> GetUsers(UserParams userParams); 
         Task<Users> GetUser(int id);
         Task<Photos> GetPhoto(int id);
+        Task<Photos> GetMainPhotoForUser(int id );
         
     }
 }

@@ -74,7 +74,9 @@ namespace app.Controllers
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
-            return Ok(new { tokenString });
+
+            var user = _mapper.Map<UserForList>(userFromRepo);
+            return Ok(new { tokenString, user });
         }
 
 
